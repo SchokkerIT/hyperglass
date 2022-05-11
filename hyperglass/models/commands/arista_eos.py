@@ -30,21 +30,21 @@ class _IPv6(CommandSet):
 class _VPNIPv4(CommandSet):
     """Validation model for non-default ipv6 commands."""
 
-    bgp_route: StrictStr = "show ip bgp {target} vrf {vrf}"
-    bgp_aspath: StrictStr = "show ip bgp regexp {target} vrf {vrf}"
-    bgp_community: StrictStr = "show ip bgp community {target} vrf {vrf}"
-    ping: StrictStr = "ping vrf {vrf} ip {target} source {source}"
-    traceroute: StrictStr = "traceroute vrf {vrf} ip {target} source {source}"
+    bgp_route: StrictStr = "show ip bgp {target}"
+    bgp_aspath: StrictStr = "show ip bgp regexp {target}"
+    bgp_community: StrictStr = "show ip bgp community {target}"
+    ping: StrictStr = "ping ip {target} source {source}"
+    traceroute: StrictStr = "traceroute ip {target} source {source}"
 
 
 class _VPNIPv6(CommandSet):
     """Validation model for non-default ipv6 commands."""
 
-    bgp_route: StrictStr = "show ipv6 bgp {target} vrf {vrf}"
-    bgp_aspath: StrictStr = "show ipv6 bgp regexp {target} vrf {vrf}"
-    bgp_community: StrictStr = "show ipv6 bgp community {target} vrf {vrf}"
-    ping: StrictStr = "ping vrf {vrf} ipv6 {target} source {source}"
-    traceroute: StrictStr = "traceroute vrf {vrf} ipv6 {target} source {source}"
+    bgp_route: StrictStr = "show ipv6 bgp {target}"
+    bgp_aspath: StrictStr = "show ipv6 bgp regexp {target}"
+    bgp_community: StrictStr = "show ipv6 bgp community {target}"
+    ping: StrictStr = "ping ipv6 {target} source {source}"
+    traceroute: StrictStr = "traceroute ipv6 {target} source {source}"
 
 
 _structured = CommandGroup(
@@ -63,18 +63,18 @@ _structured = CommandGroup(
         traceroute="traceroute ipv6 {target} source {source}",
     ),
     ipv4_vpn=CommandSet(
-        bgp_route="show ip bgp {target} vrf {vrf} | json",
-        bgp_aspath="show ip bgp regexp {target} vrf {vrf} | json",
-        bgp_community="show ip bgp community {target} vrf {vrf} | json",
-        ping="ping vrf {vrf} ip {target} source {source}",
-        traceroute="traceroute vrf {vrf} ip {target} source {source}",
+        bgp_route="show ip bgp {target} | json",
+        bgp_aspath="show ip bgp regexp {target} | json",
+        bgp_community="show ip bgp community {target} | json",
+        ping="ping ip {target} source {source}",
+        traceroute="traceroute ip {target} source {source}",
     ),
     ipv6_vpn=CommandSet(
-        bgp_route="show ipv6 bgp {target} vrf {vrf} | json",
-        bgp_aspath="show ipv6 bgp regexp {target} vrf {vrf} | json",
-        bgp_community="show ipv6 bgp community {target} vrf {vrf} | json",
-        ping="ping vrf {vrf} ipv6 {target} source {source}",
-        traceroute="traceroute vrf {vrf} ipv6 {target} source {source}",
+        bgp_route="show ipv6 bgp {target} | json",
+        bgp_aspath="show ipv6 bgp regexp {target} | json",
+        bgp_community="show ipv6 bgp community {target} | json",
+        ping="ping ipv6 {target} source {source}",
+        traceroute="traceroute ipv6 {target} source {source}",
     ),
 )
 
